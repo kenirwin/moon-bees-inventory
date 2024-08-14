@@ -2,7 +2,6 @@
 import React, {useState, FormEvent} from 'react';
 import TransferItem from "./TransferItem";
 import TransferAmount from "./TransferAmount";
-// import LookupForm from './LookupForm';
 
 type TransferObject = {
     "fromCatalogId": string,
@@ -15,16 +14,15 @@ type TransferObject = {
 
 
 const TransferForm = () => {
-    const [lookupValue, setLookupValue] = useState('');
     const [selectedQty, setSelectedQty] = useState(0);
 
     const handleQtyChange = (e) => {
         setSelectedQty(Number(e.target.value))
     }
 
-    const handleLookupChange = (e) => {
-        setLookupValue(e.target.value);
-    }
+    // const handleLookupChange = (e) => {
+    //     setLookupValue(e.target.value);
+    // }
 
     const handleSubmit = (e) => {
         console.log('handling submit')
