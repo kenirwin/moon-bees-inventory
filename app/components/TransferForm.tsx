@@ -67,7 +67,7 @@ const TransferForm = ({}: Props) => {
         <form onSubmit={handleSubmit}>
         <div className="row">
             <div className="col-md-5">
-                <LookupForm toOrFrom="from" setSelectedItem={setFromItem}></LookupForm>
+                <LookupForm toOrFrom="from" setSelectedItem={setFromItem} setStartingQty={setFromStartingQty}></LookupForm>
                 <TransferItem productId={fromItem?.varId} productName={fromItem?.name} quantity={fromStartingQty} adjustmentQty={selectedQty} toOrFrom="from"></TransferItem>
             </div>
             <div className="col-md-2">
@@ -75,7 +75,7 @@ const TransferForm = ({}: Props) => {
 
             </div>
             <div className="col-md-5">
-                <LookupForm toOrFrom="to" setSelectedItem={setToItem}></LookupForm>
+                <LookupForm toOrFrom="to" setSelectedItem={setToItem} setStartingQty={setToStartingQty}></LookupForm>
                 <TransferItem productId={toItem?.varId} productName={toItem?.name} quantity={toStartingQty} toOrFrom="to" adjustmentQty={selectedQty}></TransferItem>
             </div>
         </div>
