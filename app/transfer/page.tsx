@@ -2,15 +2,16 @@
 import {useState} from 'react'
 import TransferForm from '../components/TransferForm'
 import LookupForm from '../components/LookupForm';
+import {CatalogObject} from '../lib/myTypes';
 
 export default function Transfer () {
-    const [lookupValue, setLookupValue] = useState('');
+    const [fromItem, setFromItem] = useState({});
 
     return (
     <>
-    <LookupForm></LookupForm>
+    <LookupForm toOrFrom="from" setSelectedItem={setFromItem}></LookupForm>
     <hr />
-    <TransferForm></TransferForm>
+    <TransferForm fromItem={fromItem} toOrFrom="from"></TransferForm>
     </>
     )
 }

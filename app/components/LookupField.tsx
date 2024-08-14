@@ -2,7 +2,7 @@
 import {useState} from 'react'
 
 interface Props { 
-  setResults: Function
+  setResults: Function,
 }
 const LookupField = ({setResults}: Props) => {
   const [lookupValue, setLookupValue] = useState('');

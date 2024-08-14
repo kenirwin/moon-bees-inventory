@@ -2,18 +2,24 @@
 import React, {useState, FormEvent} from 'react';
 import TransferItem from "./TransferItem";
 import TransferAmount from "./TransferAmount";
+import { TransferObject } from '../lib/myTypes';
+import { CatalogObject } from '../lib/myTypes';
 
-type TransferObject = {
-    "fromCatalogId": string,
-    "newFromQty": string,
-    "toCatalogId": string,
-    "newToQty": string
+// type TransferObject = {
+//     "fromCatalogId": string,
+//     "newFromQty": string,
+//     "toCatalogId": string,
+//     "newToQty": string
+// }
+
+interface Props { 
+    fromItem?: CatalogObject;
+    toItem?: CatalogObject;
 }
 
 
-
-
-const TransferForm = () => {
+const TransferForm = ({fromItem, toItem}: Props) => {
+    const [fromStartingQty, setFromStartingQty] = useState(undefined)
     const [selectedQty, setSelectedQty] = useState(0);
 
     const handleQtyChange = (e) => {
@@ -56,7 +62,7 @@ const TransferForm = () => {
         <hr />
         <form onSubmit={handleSubmit}>
         <div className="row">
-            <TransferItem productId="123" productName="Elderberries (Kitchen)" quantity={14} adjustmentQty={selectedQty} toOrFrom="from"></TransferItem>
+            <TransferItem productId={fromItem?.varId} productName={fromItem?.name} quantity={fromStartingQty} adjustmentQty={selectedQty} toOrFrom="from"></TransferItem>
             <TransferAmount max={14} onChangeNumber={handleQtyChange} />
             <TransferItem productId="234" productName="Elderberries" quantity={4} toOrFrom="to" adjustmentQty={selectedQty}></TransferItem>
         </div>

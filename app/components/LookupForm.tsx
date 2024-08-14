@@ -3,7 +3,11 @@ import {useState} from 'react';
 import LookupField from './LookupField';
 import LookupResults from './LookupResults';
 
-const LookupForm = () =>{
+interface Props {
+    toOrFrom: "to" | "from",
+    setSelectedItem: Function
+}
+const LookupForm = ({toOrFrom, setSelectedItem}: Props) =>{
     // const [lookupOptions, setLookupOptions] = useState([]);
     const [results, setResults] = useState([]);
 
@@ -11,7 +15,7 @@ const LookupForm = () =>{
         <>
         <h1>Item Lookup</h1>
         <LookupField setResults={setResults}></LookupField>
-        <LookupResults items={results}></LookupResults>
+        <LookupResults items={results} setSelectedItem={setSelectedItem}></LookupResults>
         </>
     )
 }
