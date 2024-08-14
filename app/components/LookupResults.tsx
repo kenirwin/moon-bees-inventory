@@ -24,7 +24,7 @@ const LookupResults = ({items, setSelectedItem}: Props) => {
   return (
     <>
     {items.map((item, index) => {
-      return <div className={styles.item} onClick={setSelectedItem(item)}>{item.name}</div>
+      return <div className={styles.item} onClick={() => {setSelectedItem(item); console.log('selected',item.name);} }>{item.name}</div>
     })}
     </>
 

@@ -7,8 +7,8 @@ export type CatalogObject = {
   }
 
 export type TransferObject = {
-    fromCatalogId?: String,
-    newFromQty?: String,
-    toCatalogId?: String,
-    newToQty?: String
+    fromCatalogId?: String | undefined,
+    newFromQty?: String | undefined,
+    toCatalogId?: String | undefined,
+    newToQty?: String | undefined
 }

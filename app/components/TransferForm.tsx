@@ -2,6 +2,7 @@
 import React, {useState, FormEvent} from 'react';
 import TransferItem from "./TransferItem";
 import TransferAmount from "./TransferAmount";
+import LookupForm from './LookupForm';
 import { TransferObject } from '../lib/myTypes';
 import { CatalogObject } from '../lib/myTypes';
 
@@ -13,13 +14,16 @@ import { CatalogObject } from '../lib/myTypes';
 // }
 
 interface Props { 
-    fromItem?: CatalogObject;
-    toItem?: CatalogObject;
+    // fromItem?: CatalogObject;
+    // toItem?: CatalogObject;
 }
 
 
-const TransferForm = ({fromItem, toItem}: Props) => {
-    const [fromStartingQty, setFromStartingQty] = useState(undefined)
+const TransferForm = ({}: Props) => {
+    const [fromItem, setFromItem] = useState({});
+    const [toItem, setToItem] = useState({});
+    const [fromStartingQty, setFromStartingQty] = useState(undefined);
+    const [toStartingQty, setToStartingQty] = useState(undefined);
     const [selectedQty, setSelectedQty] = useState(0);
 
     const handleQtyChange = (e) => {
@@ -62,9 +66,11 @@ const TransferForm = ({fromItem, toItem}: Props) => {
         <hr />
         <form onSubmit={handleSubmit}>
         <div className="row">
+            <LookupForm toOrFrom="from" setSelectedItem={setFromItem}></LookupForm>
+
             <TransferItem productId={fromItem?.varId} productName={fromItem?.name} quantity={fromStartingQty} adjustmentQty={selectedQty} toOrFrom="from"></TransferItem>
             <TransferAmount max={14} onChangeNumber={handleQtyChange} />
-            <TransferItem productId="234" productName="Elderberries" quantity={4} toOrFrom="to" adjustmentQty={selectedQty}></TransferItem>
+            <TransferItem productId={toItem?.varId} productName={toItem?.name} quantity={toStartingQty} toOrFrom="to" adjustmentQty={selectedQty}></TransferItem>
         </div>
         <div className='row'>
             <input type="submit" className='btn btn-primary'></input>
