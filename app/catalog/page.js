@@ -4,7 +4,7 @@ import CatalogList from "../components/CatalogList";
 import CatalogAddForm from "../components/CatalogAddForm";
 
 async function getCatalog() {
-    const res = await fetch('http://localhost:3000/api/catalog')
+    const res = await fetch('http://localhost:3000/api/catalog', { cache: 'no-store' })
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
    
@@ -17,7 +17,7 @@ async function getCatalog() {
   }
 
   async function getInventory() {
-    const res = await fetch('http://localhost:3000/api/inventory')
+    const res = await fetch('http://localhost:3000/api/inventory', { cache: 'no-store' })
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
    

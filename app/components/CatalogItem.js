@@ -6,7 +6,7 @@ const CatalogItem = ({ item }) => {
     // <Link href={`/article/${article.id}`}>
       <tr key={item.id}>
         <td>{item.name}</td>
-        <td>{item.id}</td>
+        <td>{item.variations[0].id}</td>
         <td>{item.abbrev}</td>
         <td>{item.variations[0].quantity}</td>
       </tr>
