@@ -17,7 +17,7 @@ export async function GET(request, {params}) {
                 params.id
               ]
         });
-        console.log(response.result);
+        // console.log(response.result);
         return NextResponse.json(response.result.counts[0])
     } catch(error) {
         console.log(error);
