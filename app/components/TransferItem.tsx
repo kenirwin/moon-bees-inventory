@@ -7,7 +7,7 @@ interface Props {
 }
 
 const TransferItem = ({productName, quantity, toOrFrom, adjustmentQty = 0, productId}: Props) => { 
-    return <div className="card col-md-4">
+    return <div className="card">
         <h2 className="capitalize">{toOrFrom}:</h2>
         <h3>{productName}</h3>
         <p>Quantity: {quantity}</p>

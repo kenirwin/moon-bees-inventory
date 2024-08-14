@@ -66,11 +66,18 @@ const TransferForm = ({}: Props) => {
         <hr />
         <form onSubmit={handleSubmit}>
         <div className="row">
-            <LookupForm toOrFrom="from" setSelectedItem={setFromItem}></LookupForm>
+            <div className="col-md-5">
+                <LookupForm toOrFrom="from" setSelectedItem={setFromItem}></LookupForm>
+                <TransferItem productId={fromItem?.varId} productName={fromItem?.name} quantity={fromStartingQty} adjustmentQty={selectedQty} toOrFrom="from"></TransferItem>
+            </div>
+            <div className="col-md-2">
+                <TransferAmount max={14} onChangeNumber={handleQtyChange} />
 
-            <TransferItem productId={fromItem?.varId} productName={fromItem?.name} quantity={fromStartingQty} adjustmentQty={selectedQty} toOrFrom="from"></TransferItem>
-            <TransferAmount max={14} onChangeNumber={handleQtyChange} />
-            <TransferItem productId={toItem?.varId} productName={toItem?.name} quantity={toStartingQty} toOrFrom="to" adjustmentQty={selectedQty}></TransferItem>
+            </div>
+            <div className="col-md-5">
+                <LookupForm toOrFrom="to" setSelectedItem={setToItem}></LookupForm>
+                <TransferItem productId={toItem?.varId} productName={toItem?.name} quantity={toStartingQty} toOrFrom="to" adjustmentQty={selectedQty}></TransferItem>
+            </div>
         </div>
         <div className='row'>
             <input type="submit" className='btn btn-primary'></input>
