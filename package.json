@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "crypto": "^1.0.1",
     "dayjs": "^1.11.12",
     "dayjs-with-plugins": "^1.0.4",
