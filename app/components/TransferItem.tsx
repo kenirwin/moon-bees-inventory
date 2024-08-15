@@ -11,7 +11,7 @@ const TransferItem = ({productName, quantity, toOrFrom, adjustmentQty = 0, produ
     // console.log('adj', typeof adjustmentQty, adjustmentQty)
     let q = 0;
     if (quantity) {
-     q = parseInt(quantity)
+     q = Number(quantity)
     }
     
     return <div className="card mt-3">
