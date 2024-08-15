@@ -1,16 +1,18 @@
+export type BootstrapAlertColors = 'info' | 'success' | 'warning' | 'danger'
+
 export type Message = { 
-    color: 'info' | 'success' | 'warning' | 'danger',
+    color: BootstrapAlertColors,
     children: React.ReactNode,
     dismissible?: Boolean,
-    onClose?: Function
+    onClose?: MouseEventHandler<HTMLButtonElement>
 }
 
 export type CatalogObject = {
-    type?: String,
-    id?: String,
-    name?: String,
-    varType?: String,
-    varId?: String
+    type?: String | undefined,
+    id?: String | undefined,
+    name?: String | undefined,
+    varType?: String | undefined,
+    varId?: String | undefined
   }
 
 export type TransferObject = {

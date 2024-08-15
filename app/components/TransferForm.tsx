@@ -6,15 +6,16 @@ import LookupForm from './LookupForm';
 import { TransferObject } from '../lib/myTypes';
 import { CatalogObject } from '../lib/myTypes';
 import Alert from './Alert';
+import { BootstrapAlertColors } from '../lib/myTypes';
 
 const TransferForm = () => {
-    const [fromItem, setFromItem] = useState({});
-    const [toItem, setToItem] = useState({});
+    const [fromItem, setFromItem] = useState<CatalogObject>({});
+    const [toItem, setToItem] = useState<CatalogObject>({});
     const [fromStartingQty, setFromStartingQty] = useState(undefined);
     const [toStartingQty, setToStartingQty] = useState(undefined);
     const [selectedQty, setSelectedQty] = useState(0);
     const [alertMessage, setAlertMessage] = useState('');
-    const [alertColor, setAlertColor] = useState('info');
+    const [alertColor, setAlertColor] = useState<BootstrapAlertColors>('info');
     const [alertVisibility, setAlertVisibility] = useState(false);
 
     const handleQtyChange = (e) => {
