@@ -27,7 +27,7 @@ async function getCatalog() {
       throw new Error('Failed to fetch inventory data')
     }
     
-    return res.json() 
+    return await res.json() 
   }
 
   function addCountsToCatalog(catalogItems,inventory) {
@@ -35,7 +35,7 @@ async function getCatalog() {
         const varId = item.variations[0].id; 
         const matches = inventory.filter(inv => inv.catalogObjectId == varId);
         if (matches.length > 0) {
-          item.variations[0].quantity = parseInt(matches[0].quantity);
+          item.variations[0].quantity = Number(matches[0].quantity);
         } else {
           item.variations[0].quantity = 0;
         }
@@ -51,10 +51,11 @@ export default async function Catalog() {
     <h1>Product Catalog</h1>
     {/* <CatalogAddForm></CatalogAddForm> */}
     <CatalogList catalogItems={catalogItems} counts={inventory.counts}></CatalogList>
-    <h2>Length { catalogItems.length }</h2>
+    <h2 className="mt-4">catalogItems - Length: { catalogItems.length } </h2>
     <pre>
     {JSON.stringify(catalogItems,null,2)}
     </pre>
+    <h2>inventory.counts</h2>
     <pre>
         {JSON.stringify(inventory.counts, null,2)}
     </pre>
