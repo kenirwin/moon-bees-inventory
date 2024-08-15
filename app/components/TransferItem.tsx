@@ -14,7 +14,7 @@ const TransferItem = ({productName, quantity, toOrFrom, adjustmentQty = 0, produ
      q = parseInt(quantity)
     }
     
-    return <div className="card">
+    return <div className="card mt-3">
         <h2 className="capitalize">{toOrFrom}:</h2>
         <h3>{productName}</h3>
         <p>Quantity: {quantity}</p>

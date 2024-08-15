@@ -17,7 +17,7 @@ const LookupField = ({setResults}: Props) => {
 
   return (
     <div className="lookup-form">
-        <input type="text" value={lookupValue} onChange={(e => handleLookupChange(e.target.value))}></input>
+        <input type="text" value={lookupValue} onChange={(e => handleLookupChange(e.target.value))} placeholder='Item Lookup'></input>
     </div>
   )
 }

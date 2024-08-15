@@ -14,7 +14,6 @@ const LookupForm = ({toOrFrom, setSelectedItem, setStartingQty}: Props) =>{
 
     return (
         <>
-        <h2>Item Lookup</h2>
         <LookupField setResults={setResults}></LookupField>
         <LookupResults items={results} setSelectedItem={setSelectedItem} setStartingQty={setStartingQty}></LookupResults>
         </>

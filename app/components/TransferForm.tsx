@@ -95,7 +95,7 @@ const TransferForm = () => {
             </div>
         </div>
         <div className='row'>
-            <input type="submit" className='btn btn-primary'></input>
+            <input type="submit" className='btn btn-primary mt-3'></input>
         </div>
         </form>
         
