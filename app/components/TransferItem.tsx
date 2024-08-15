@@ -14,12 +14,13 @@ const TransferItem = ({productName, quantity, toOrFrom, adjustmentQty = 0, produ
      q = Number(quantity)
     }
     
+    const places = 2;
     return <div className="card mt-3">
         <h2 className="capitalize">{toOrFrom}:</h2>
         <h3>{productName}</h3>
         <p>Quantity: {quantity}</p>
-        <p>New Qty after transfer: {toOrFrom == "to" ? q + adjustmentQty : q - adjustmentQty} </p>
-        <input type="hidden" data-productid={productId} data-transferdirection={toOrFrom} data-newvalue={toOrFrom == "to" ? q + adjustmentQty : q - adjustmentQty}></input>
+        <p>New Qty after transfer: {toOrFrom == "to" ? (q + adjustmentQty).toFixed(places) : (q - adjustmentQty).toFixed(places)} </p>
+        <input type="hidden" data-productid={productId} data-transferdirection={toOrFrom} data-newvalue={toOrFrom == "to" ? (q + adjustmentQty).toFixed(places) : (q - adjustmentQty).toFixed(places)}></input>
     </div>
 }
 
