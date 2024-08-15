@@ -5,31 +5,29 @@ import TransferAmount from "./TransferAmount";
 import LookupForm from './LookupForm';
 import { TransferObject } from '../lib/myTypes';
 import { CatalogObject } from '../lib/myTypes';
+import Alert from './Alert';
 
-// type TransferObject = {
-//     "fromCatalogId": string,
-//     "newFromQty": string,
-//     "toCatalogId": string,
-//     "newToQty": string
-// }
-
-interface Props { 
-    // fromItem?: CatalogObject;
-    // toItem?: CatalogObject;
-}
-
-
-const TransferForm = ({}: Props) => {
+const TransferForm = () => {
     const [fromItem, setFromItem] = useState({});
     const [toItem, setToItem] = useState({});
     const [fromStartingQty, setFromStartingQty] = useState(undefined);
     const [toStartingQty, setToStartingQty] = useState(undefined);
     const [selectedQty, setSelectedQty] = useState(0);
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertColor, setAlertColor] = useState('info');
+    const [alertVisibility, setAlertVisibility] = useState(false);
 
     const handleQtyChange = (e) => {
         setSelectedQty(Number(e.target.value))
     }
 
+    const resetForm = () => {
+        setFromItem({});
+        setToItem({});
+        setFromStartingQty(undefined);
+        setToStartingQty(undefined);
+        setSelectedQty(0);
+    }
     // const handleLookupChange = (e) => {
     //     setLookupValue(e.target.value);
     // }
@@ -64,12 +62,19 @@ const TransferForm = ({}: Props) => {
             },
             body: JSON.stringify(queryObject),
             }).then(response => response.json())
-            .then(data => console.log('updated inventory:',data))
+            .then(data =>  {
+                console.log('updated inventory:',data);
+                setAlertColor('success');
+                setAlertMessage('Success!' + JSON.stringify(data.counts.map((i) => {return {catalogObjectId: i.catalogObjectId, quantity: i.quantity}})));
+                setAlertVisibility(true);
+                resetForm();
+            })
+            
     }
 
     return (
         <>
-
+       {alertVisibility && <Alert color={alertColor} dismissible={true} onClose={()=>setAlertVisibility(false)}>{alertMessage}</Alert>}
         <h1>Transfer Stock</h1>
 
         <hr />

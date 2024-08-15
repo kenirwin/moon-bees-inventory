@@ -1,3 +1,10 @@
+export type Message = { 
+    color: 'info' | 'success' | 'warning' | 'danger',
+    children: React.ReactNode,
+    dismissible?: Boolean,
+    onClose?: Function
+}
+
 export type CatalogObject = {
     type?: String,
     id?: String,
