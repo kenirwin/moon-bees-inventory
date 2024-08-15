@@ -21,7 +21,7 @@ const LookupResults = ({items, setSelectedItem, setStartingQty}: Props) => {
     setSelectedItem(item); 
     console.log('selected',item.name);
 
-    fetch(`http://localhost:3000/api/inventory/${item.varId}`)
+    fetch(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/inventory/${item.varId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch inventory data');

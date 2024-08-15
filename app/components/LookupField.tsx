@@ -9,7 +9,7 @@ const LookupField = ({setResults}: Props) => {
     
   const handleLookupChange = async (value) => {
       setLookupValue(value);
-      let res = await fetch('http://localhost:3000/api/catalog/search?q='+value);
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/catalog/search?q=${value}`);
       let json = await res.json();
       setResults(json)
       console.log('Lookup Results:', json);

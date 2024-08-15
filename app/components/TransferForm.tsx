@@ -56,7 +56,7 @@ const TransferForm = () => {
         
         console.log(queryObject);
 
-        fetch('http://localhost:3000/api/inventory/transfer', {
+        fetch(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/inventory/transfer`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
