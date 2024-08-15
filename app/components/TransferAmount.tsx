@@ -1,7 +1,7 @@
 interface Props {
     quantity?: number;
     max?: number; 
-    onChangeNumber: Function;
+    onChangeNumber: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const TransferAmount = ({quantity, max, onChangeNumber }: Props) => { 
