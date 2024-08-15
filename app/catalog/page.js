@@ -49,7 +49,7 @@ export default async function Catalog() {
     const catalogWithInventory = addCountsToCatalog(catalogItems,inventory.counts);
     return (<>
     <h1>Product Catalog</h1>
-    <CatalogAddForm></CatalogAddForm>
+    {/* <CatalogAddForm></CatalogAddForm> */}
     <CatalogList catalogItems={catalogItems} counts={inventory.counts}></CatalogList>
     <h2>Length { catalogItems.length }</h2>
     <pre>
