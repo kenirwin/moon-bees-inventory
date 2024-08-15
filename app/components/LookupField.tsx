@@ -3,11 +3,13 @@ import {useState} from 'react'
 
 interface Props { 
   setResults: Function,
+  setResultsVisibility: Function
 }
-const LookupField = ({setResults}: Props) => {
+const LookupField = ({setResults, setResultsVisibility}: Props) => {
   const [lookupValue, setLookupValue] = useState('');
     
   const handleLookupChange = async (value) => {
+      setResultsVisibility(true);
       setLookupValue(value);
       let res = await fetch(`/api/catalog/search?q=${value}`);
       let json = await res.json();

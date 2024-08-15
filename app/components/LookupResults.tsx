@@ -13,12 +13,15 @@ import { CatalogObject } from '../lib/myTypes'
 interface Props {
   items: CatalogObject[],
   setSelectedItem: Function,
-  setStartingQty: Function
+  setStartingQty: Function,
+  setResultsVisibility: Function,
+  show: Boolean
 }
 
-const LookupResults = ({items, setSelectedItem, setStartingQty}: Props) => {
+const LookupResults = ({items, setSelectedItem, setStartingQty, setResultsVisibility, show}: Props) => {
   const handleSelection =  (item) => {
     setSelectedItem(item); 
+    setResultsVisibility(false)
     console.log('selected',item.name);
 
     fetch(`/api/inventory/${item.varId}`)
@@ -42,7 +45,7 @@ const LookupResults = ({items, setSelectedItem, setStartingQty}: Props) => {
   } else {
     return (
       <>
-      {items?.map((item, index) => {
+      {show && items?.map((item, index) => {
         // This version works but can't be expanded easily; replace with another function
         // return <div className={styles.item} onClick={() => {setSelectedItem(item); console.log('selected',item.name);} }>{item.name}</div>
         return <div key={index} className={styles.item} onClick={() => {handleSelection(item); } }>{item.name}</div>
