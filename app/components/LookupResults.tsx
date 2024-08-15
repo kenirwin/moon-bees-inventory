@@ -39,7 +39,7 @@ const LookupResults = ({items, setSelectedItem, setStartingQty}: Props) => {
     {items.map((item, index) => {
       // This version works but can't be expanded easily; replace with another function
       // return <div className={styles.item} onClick={() => {setSelectedItem(item); console.log('selected',item.name);} }>{item.name}</div>
-      return <div className={styles.item} onClick={() => {handleSelection(item); } }>{item.name}</div>
+      return <div key={index} className={styles.item} onClick={() => {handleSelection(item); } }>{item.name}</div>
     })}
     </>
 

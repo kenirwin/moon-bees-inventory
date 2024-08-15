@@ -7,8 +7,8 @@ const CatalogList = ({ catalogItems }) => {
             <tr><th>Name</th><th>ID</th><th>Abbrev</th><th>Quantity</th></tr>
         </thead>
         <tbody>
-            {catalogItems.map((item) => (
-            <CatalogItem item={item} />
+            {catalogItems.map((item,index) => (
+            <CatalogItem key={index} item={item} />
             ))}
         </tbody>
       </table>
