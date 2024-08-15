@@ -34,16 +34,25 @@ const LookupResults = ({items, setSelectedItem, setStartingQty}: Props) => {
       })
   }
   
-  return (
-    <>
-    {items.map((item, index) => {
-      // This version works but can't be expanded easily; replace with another function
-      // return <div className={styles.item} onClick={() => {setSelectedItem(item); console.log('selected',item.name);} }>{item.name}</div>
-      return <div key={index} className={styles.item} onClick={() => {handleSelection(item); } }>{item.name}</div>
-    })}
-    </>
 
-  )
+
+  if (typeof items == 'string') {
+    // I don't know why, but this correctly detects an empty items array were length == 0 did not
+    return <></>
+  } else {
+    return (
+      <>
+      {items?.map((item, index) => {
+        // This version works but can't be expanded easily; replace with another function
+        // return <div className={styles.item} onClick={() => {setSelectedItem(item); console.log('selected',item.name);} }>{item.name}</div>
+        return <div key={index} className={styles.item} onClick={() => {handleSelection(item); } }>{item.name}</div>
+      })}
+      </>
+  
+    )
+  }
+
+
 }
 
 export default LookupResults
