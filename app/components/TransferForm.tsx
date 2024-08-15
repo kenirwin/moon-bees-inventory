@@ -80,7 +80,7 @@ const TransferForm = ({}: Props) => {
                 <TransferItem productId={fromItem?.varId} productName={fromItem?.name} quantity={fromStartingQty} adjustmentQty={selectedQty} toOrFrom="from"></TransferItem>
             </div>
             <div className="col-md-2">
-                <TransferAmount max={14} onChangeNumber={handleQtyChange} />
+                <TransferAmount max={fromStartingQty} onChangeNumber={handleQtyChange} />
 
             </div>
             <div className="col-md-5">
