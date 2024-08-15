@@ -1,3 +1,7 @@
 .capitalize::first-letter {
   text-transform: capitalize;
 }
+
+input[type="number"] {
+  width: 100px;
+}

@@ -9,7 +9,7 @@ const TransferAmount = ({quantity, max, onChangeNumber }: Props) => {
     if (max) { 
        input = <input type="number" min="1" name="transferQty" id="transferQty" max={max} onChange={onChangeNumber} />;
     } else { 
-        input = <input type="number" min="1" name="transferQty" id="transferQty" onChange={onChangeNumber}/>
+        input = <input type="number" min="1" name="transferQty" id="transferQty" onChange={onChangeNumber} />
     }
     return (<>
         <div className="col-md-3">
