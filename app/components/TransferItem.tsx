@@ -7,8 +7,8 @@ interface Props {
 }
 
 const TransferItem = ({productName, quantity, toOrFrom, adjustmentQty = 0, productId}: Props) => { 
-    console.log('quantity', typeof quantity, quantity)
-    console.log('adj', typeof adjustmentQty, adjustmentQty)
+    // console.log('quantity', typeof quantity, quantity)
+    // console.log('adj', typeof adjustmentQty, adjustmentQty)
     const q = parseInt(quantity)
     return <div className="card">
         <h2 className="capitalize">{toOrFrom}:</h2>
