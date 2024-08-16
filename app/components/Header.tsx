@@ -1,24 +1,27 @@
 import React from 'react';
 
 const Header = () => {
-  let headerColor, label;
+  let headerColor, textColor, label;
   switch (process.env.VERCEL_ENV) {
     case 'local':
       headerColor = 'warning';
+      textColor = 'dark';
       label = '(Localhost)';
       break;
     case 'preview':
       headerColor = 'secondary';
+      textColor = 'light';
       label = '(Dev)';
       break;
     case 'production':
       headerColor = 'primary';
+      textColor = 'light';
       break;
   }
   return (
     <nav className={`navbar navbar-expand-lg navbar-light bg-${headerColor}`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/transfer">
+        <a className={`navbar-brand text-${textColor}`} href="/transfer">
           Moon Bees Inventory {label}
         </a>
         <button
@@ -35,7 +38,11 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <a
+                className={`nav-link text-${textColor}`}
+                aria-current="page"
+                href="#"
+              >
                 Home
               </a>
             </li>
@@ -47,7 +54,7 @@ const Header = () => {
         </li> */}
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle"
+                className={`nav-link dropdown-toggle text-${textColor}`}
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -58,7 +65,7 @@ const Header = () => {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="/catalog">
+                  <a className={`dropdown-item`} href="/catalog">
                     Catalog (Pretty)
                   </a>
                 </li>
