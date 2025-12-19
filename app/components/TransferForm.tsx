@@ -65,7 +65,7 @@ const TransferForm = () => {
             }).then(response => response.json())
             .then(data =>  {
                 if (data && Array.isArray(data.counts)) { 
-                    console.log('updated inventory:',data);
+                    console.log('updated inventory:',JSON.stringify(data));
                     setAlertColor('success');
                     setAlertMessage('Success!' + JSON.stringify(data.counts.map((i) => {return {catalogObjectId: i.catalogObjectId, quantity: i.quantity}})));
                     setAlertVisibility(true);
