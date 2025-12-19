@@ -64,7 +64,7 @@ const TransferForm = () => {
             body: JSON.stringify(queryObject),
             }).then(response => response.json())
             .then(data =>  {
-                if (Array.isArray(data.counts)) { 
+                if (data && Array.isArray(data.counts)) { 
                     console.log('updated inventory:',data);
                     setAlertColor('success');
                     setAlertMessage('Success!' + JSON.stringify(data.counts.map((i) => {return {catalogObjectId: i.catalogObjectId, quantity: i.quantity}})));
@@ -72,8 +72,9 @@ const TransferForm = () => {
                     resetForm();
                 } else { 
                     setAlertColor('danger');
-                    setAlertMessage('No response from server');
+                    setAlertMessage('No response / invalid response from server');
                     setAlertVisibility(true);
+                    console.error('Response:',data);
                 }
 
             })
