@@ -8,6 +8,8 @@ const dayjs = require('dayjs-with-plugins');
 export async function POST (request) {
     // expect fromCatalogId, toCatalogId, newFromQty, newToQty
     try {
+        console.warn('test console warning');
+        console.log('test console log');
         const timestamp = dayjs().utc().format();
         const {fromCatalogId, toCatalogId, newFromQty, newToQty} = await request.json();
         const response = await client.inventoryApi.batchChangeInventory({
