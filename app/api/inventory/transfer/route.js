@@ -8,9 +8,11 @@ const dayjs = require('dayjs-with-plugins');
 export async function POST (request) {
     // expect fromCatalogId, toCatalogId, newFromQty, newToQty
     try {
+        // console.warn('test console warning');
+        // console.log('test console log');
         const timestamp = dayjs().utc().format();
         const {fromCatalogId, toCatalogId, newFromQty, newToQty} = await request.json();
-        const response = await client.inventoryApi.batchChangeInventory({
+        const query =  {
           idempotencyKey: randomUUID(),
           changes: [
             {
@@ -34,9 +36,11 @@ export async function POST (request) {
               }
             }
           ]
-        });
+        };
+        console.log('Square API transfer query:',JSON.stringify(query))
+        const response = await client.inventoryApi.batchChangeInventory(query);
       
-        console.log(response.result);
+        console.log('Square Transfer API Response result', JSON.stringify(response));
         return NextResponse.json(response.result);
       } catch(error) {
         console.log(error);
