@@ -6,8 +6,8 @@ const dayjs = require('dayjs-with-plugins');
 
 // transfer stock from one item to another
 export async function POST (request) {
-    console.log('starting post request');
-    console.warn('test warning');
+    // console.log('starting post request');
+    // console.warn('test warning');
     // expect fromCatalogId, toCatalogId, newFromQty, newToQty
     try {
         const timestamp = dayjs().utc().format();
@@ -37,13 +37,13 @@ export async function POST (request) {
             }
           ]
         }
-        console.log('Submitted transfer', JSON.stringify(inventoryChangeObject));
+        // console.log('Submitted transfer', JSON.stringify(inventoryChangeObject));
         const response = await client.inventoryApi.batchChangeInventory(inventoryChangeObject);
       
-        console.log('Transfer response', response.result);
+        // console.log('Transfer response', response.result);
         return NextResponse.json(response.result);
       } catch(error) {
-        console.log(error);
+        console.error(error);
         return NextResponse.json(error.body)
       }
 }
