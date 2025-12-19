@@ -6,6 +6,8 @@ const dayjs = require('dayjs-with-plugins');
 
 // transfer stock from one item to another
 export async function POST (request) {
+    console.log('starting post request');
+    console.warn('test warning');
     // expect fromCatalogId, toCatalogId, newFromQty, newToQty
     try {
         const timestamp = dayjs().utc().format();
